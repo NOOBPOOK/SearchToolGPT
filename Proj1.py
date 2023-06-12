@@ -3,6 +3,13 @@ from SearchPackage.Search import SerpAPIWrapper
 
 SERPAPI_API_KEY = '828d696b33f3825342982e6b0f7bc230d110a84001a9d70003ddda0175571063'
 
+'''
+This chat model is basically for searching things on the web rather than answering complex questions. Here 
+first data is fed to a search engine Google, which transforms it to context and this context is passed on
+to the LLM for more refined output 
+'''
+
+
 #Contains the code for a normal Guidance llm chat bot
 def gpt(ques):
     #Building a LLM with GPT3.5
