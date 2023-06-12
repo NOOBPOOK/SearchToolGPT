@@ -7,7 +7,6 @@ SERPAPI_API_KEY = '828d696b33f3825342982e6b0f7bc230d110a84001a9d70003ddda0175571
 def gpt(ques):
     #Building a LLM with GPT3.5
     guid = guidance.llms.OpenAI("gpt-3.5-turbo")
-    context = ""
     #Chat Dialog reference
     result = guidance('''
     {{#system~}}
