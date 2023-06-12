@@ -17,7 +17,7 @@ def gpt(ques):
     {{#user~}}
     Please try to answer this question
     {{query}}
-    Use this context for answering Purposes
+    Use this text as a context
     {{search query}}
     {{~/user}}
 
@@ -50,8 +50,12 @@ def gpt(ques):
 
 def search(st):
     search = SerpAPIWrapper(serpapi_api_key = SERPAPI_API_KEY,search_engine="google")
-    ok = search.run(st)
-    return "According to Google, " + ok
+    try:
+        ok = search.run(st)
+        return "According to Google, " + ok
+    except:
+        print("No good results found")
+        return st
 
 question = input("Ask your Query to search Engine >>   ")
 gpt(question)
