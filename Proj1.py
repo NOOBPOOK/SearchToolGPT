@@ -1,7 +1,9 @@
 import guidance
 from SearchPackage.Search import SerpAPIWrapper
+from dotenv import dotenv_values
 
-SERPAPI_API_KEY = '828d696b33f3825342982e6b0f7bc230d110a84001a9d70003ddda0175571063'
+config = dotenv_values(".env")
+SERPAPI_API_KEY = config.get("SERPAPI_API_KEY")
 
 '''
 This chat model is basically for searching things on the web rather than answering complex questions. Here 
@@ -32,14 +34,6 @@ def gpt(ques):
     {{~/assistant}}
 
     {{#user~}}
-    Give some more additional information about the previous question.
-    {{~/user}}
-
-    {{#assistant~}}
-    {{gen 'answer' temperature=0.2 max_tokens=1000}}
-    {{~/assistant}}
-
-    {{#user~}}
     Now combine the all the answers generated.
     {{~/user}}
 
@@ -60,8 +54,7 @@ def search(st):
         ok = search.run(st)
         return "According to Google, " + ok
     except:
-        print("No good results found")
-        return st
+        return "No good results found"
 
 question = input("Ask your Query to search Engine >>   ")
 gpt(question)
